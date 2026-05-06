@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <style>
+        :root {
+            --primary-color: #7A24B6;
+            --accent-color: #891f9e;
+            --text-color: #ecf0f1;
+            --light-text: #bdc3c7;
+            --background: #f9f9f9;
+            --card-bg: #ffffff;
+            --padding: 2rem;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: 0.3s;
+        }
+
+        @font-face {
+            font-family: 'MyFont';
+            src: url(MyFont.ttf);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'MyFont';
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background: url(tło.jpg) center/cover no-repeat,
+                        rgba(231, 230, 230, 0.6);
+            background-blend-mode: lighten;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+.homecon {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px;
+        }
+    
+        .text {
+            max-width: 50%;
+            color: #7A24B6;
+            text-align: center;
+        }
+
+        .text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .text p {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .text h3 {
+            margin: 50px 0 30px;
+            font-size: 26px;
+        }
+
+        .image img {
+            width: 500px;
+        }
+.container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--padding) 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo_text a {
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo img {
+            width: 200px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        .nav-links a.active {
+            color: var(--text-color);
+            border-bottom: 2px solid var(--text-color);
+        }
+
+        .language-toggle {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+
+        .language-toggle:hover {
+            background-color: var(--primary-color);
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .bio-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .bio-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 5px solid var(--accent-color);
+        }
+
+        .bio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cv-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-item-title {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .cv-item-date {
+            color: var(--accent-color);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            aspect-ratio: 16/9;
+        }
+
+        .portfolio-item img, .portfolio-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition);
+        }
+
+        .portfolio-item:hover img, .portfolio-item:hover video {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 25px;
+            margin-top: 2%;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--text-color);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links { gap: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .bio-content { flex-direction: column; }
+            .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .homecon { flex-direction: column; align-items: center; padding: 40px 20px; }
+            .text { max-width: 100%; margin-bottom: 30px; }
+            .image img { width: 100%; max-width: 400px; }
+        }
+
+        @media (max-width: 576px) {
+            .container { width: 95%; }
+            .nav-links { 
+                flex-direction: column; 
+                align-items: flex-end; 
+                gap: 0.5rem; 
+            }
+            .hero h1 { font-size: 1.8rem; }
+            .cv-item-header { 
+                flex-direction: column; 
+                gap: 0.3rem; 
+            }
+            .text h2 { font-size: 28px; }
+            .text p { font-size: 18px; }
+            .text h3 { font-size: 22px; }
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            cursor: pointer;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            cursor: default;
+            animation: zoomIn 0.3s ease-in-out;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all var(--transition);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        @keyframes zoomIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo,podpis biały.png" alt="Karolina Morka Logo" loading="lazy">
+                    <div class="logo_text">
+                        <p>Karolina Morka</p>
+                        <a>Graficzka Komputerowa</a>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active" data-en="Home" data-pl="Strona główna">Home</a>
+                    <a href="#bio" class="nav-link" data-en="Bio" data-pl="Biografia">Bio</a>
+                    <a href="#cv" class="nav-link" data-en="CV" data-pl="CV">CV</a>
+                    <a href="#portfolio" class="nav-link" data-en="Portfolio" data-pl="Portfolio">Portfolio</a>
+                    <button id="language-toggle" class="language-toggle">PL/EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="homecon">
+                <div class="text">
+                    <h2 data-en="Welcome to my portfolio website" data-pl="Witaj na mojej stronie portfolio">Welcome to my portfolio website</h2>
+                    <p data-en="Get to know me and my skills" data-pl="Poznaj mnie oraz moje zdolności">Get to know me and my skills</p>
+                    <h3>Karolina Morka</h3>
+                    <p data-en="Officially: A graphic designer with a bachelor's degree, ready to start working." 
+                       data-pl="Oficjalnie: Graficzka po studiach licencjackich, gotowa podjąć się pracy.">Officially: A graphic designer with a bachelor's degree, ready to start working.</p>
+                    <p data-en="Unofficially: A person who thinks in images and can't wait to show them to the world."
+                       data-pl="Nieoficjalnie: Osoba, która myśli obrazami i nie może się doczekać, żeby je pokazać światu.">Unofficially: A person who thinks in images and can't wait to show them to the world.</p>
+                </div>
+
+                <div class="image">
+                    <img src="Illustration_0.jpg" alt="Karolina Morka Illustration" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Bio Page -->
+        <section id="bio" class="page">
+            <div class="section">
+                <h1 class="section-title" data-en="Personal Biography" data-pl="Biografia osobista">Personal Biography</h1>
+                <div class="card bio-content">
+                    <div class="bio-image">
+                        <img src="Zdjęcie na biografię.jpg" alt="Karolina Morka Photo" loading="lazy">
+                    </div>
+                    
+                    <div class="bio-text">
+                        <h2 data-en="About Me" data-pl="O mnie">About Me</h2>
+                        <p data-en="My name is Karolina Morka, and I’ve been drawing for as long as I can remember — first in notebooks, then on a tablet. I completed a
+                         bachelor’s degree in computer graphics, and I draw inspiration from everywhere — because why limit yourself to one style when the world is so diverse?"
+                           data-pl="Nazywam się Karolina Morka i rysuję odkąd pamiętam – najpierw po zeszytach, potem po tablecie. Skończyłam studia licencjackie z
+                            grafiki komputerowej, a inspiracje czerpię z każdej możliwej strony – bo po co zamykać się w jednym stylu, skoro świat jest taki różnorodny?">
+                           My name is Karolina Morka, and I’ve been drawing for as long as I can remember — first in notebooks, then on a tablet. I completed a bachelor’s
+                            degree in computer graphics, and I draw inspiration from everywhere — because why limit yourself to one style when the world is so diverse?
+                        </p>
+                        <br>
+                        <p data-en="It all started with Disney classics like The Lion King and The Hunchback of Notre Dame, which showed me that animation can be deeply moving.
+                         As I got older and discovered the internet, I realized that incredible things aren’t created only by big studios, but also by individuals working at
+                          their own desks. Shows like The Owl House and Steven Universe proved that what really matters is creativity and passion, not budget. Today,
+                           Glitch Productions is doing exactly that — their The Amazing Digital Circus is reaching cinemas and showing that dreams can come true.
+                            It’s people and what they are capable of creating that inspire me the most."
+                           data-pl="Wszystko zaczęło się od klasyk Disneya – Król Lew, Dzwonnik z Notre Dame – które pokazały mi, że animacja może poruszać do głębi.
+                            Kiedy podrosłam i odkryłam internet, zobaczyłam, że niesamowite rzeczy tworzą nie tylko wielkie studia, ale też pojedyncze osoby przy swoim biurku.
+                             Seriale jak Sowi Dom czy Steven Universe udowodniły, że liczy się pomysł i pasja, a nie budżet. Dziś studio Glitch robi dokładnie to samo
+                              – ich The Amazing Digital Circus trafia do kin i pokazuje, że marzenia da się zrealizować. To właśnie ludzie i to, co potrafią stworzyć,
+                               inspirują mnie najbardziej."
+">
+                           It all started with Disney classics like The Lion King and The Hunchback of Notre Dame, which showed me that animation can be deeply moving.
+                            As I got older and discovered the internet, I realized that incredible things aren’t created only by big studios, but also by individuals working
+                             at their own desks. Shows like The Owl House and Steven Universe proved that what really matters is creativity and passion, not budget. Today,
+                              Glitch Productions is doing exactly that — their The Amazing Digital Circus is reaching cinemas and showing that dreams can come true.
+                               It’s people and what they are capable of creating that inspire me the most.
+                        </p>
+                        <br>
+                        <p data-en="I haven’t worked professionally in the field yet, but it’s only a matter of time. I treat every new project
+                         as an opportunity to learn and experiment, approaching my work with enthusiasm and an open mind."
+                           data-pl="W zawodzie jeszcze nie pracowałam, ale to tylko kwestia czasu. Każdy nowy projekt traktuję jako okazję do nauki i eksperymentowania,
+                            a do pracy podchodzę z entuzjazmem i otwartą głową.">
+                           I haven’t worked professionally in the field yet, but it’s only a matter of time. I treat every new project as an
+                            opportunity to learn and experiment, approaching my work with enthusiasm and an open mind.
+                        </p>
+                        <br>
+                        <p data-en="And my biggest dream? To create an animation or a game that captivates millions. Not a small goal
+                                — but those are exactly the kinds of ambitions worth saying out loud."
+                           data-pl="A moje największe marzenie? Stworzyć animację lub grę, która zachwyci miliony. Nie mało – ale właśnie o
+                            takich celach warto mówić głośno.">
+                            And my biggest dream? To create an animation or a game that captivates millions. Not a small goal — but those are exactly 
+                            the kinds of ambitions worth saying out loud.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Page -->
+        <section id="cv" class="page">
+            <div class="section">
+                <h1 class="section-title" data-en="Curriculum Vitae" data-pl="Curriculum Vitae">Curriculum Vitae</h1>
+                
+                <div class="section">
+                    <h2 class="section-title" data-en="Education" data-pl="Edukacja">Education</h2>
+                    <div class="card">
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title" data-en="Computer Graphic Designer" data-pl="Graficzka komputerowa">Computer Graphic Designer</span>
+                                <span class="cv-item-date">10/2021 – 02/2026</span>
+                            </div>
+                            <p data-en="Polish-Japanese Academy of Information Technology Koszykowa 86, 02-008 Warsaw," 
+                                   data-pl="Polsko–Japońskiej Akademii Technik Komputerowych Koszykowa 86, 02-008 Warszawa,">
+                                    Polish-Japanese Academy of Information Technology Koszykowa 86, 02-008 Warsaw,
+                            </p>
+                             <p data-en="Field of Study: Computer Graphics, Faculty of New Media Arts, Specialization: Animation" 
+                                   data-pl="Kierunek Grafik Komputerowy na wydziale Sztuka Nowych Mediów, Specjalizacja animacja  ">
+                                    Field of Study: Computer Graphics, Faculty of New Media Arts, Specialization: Animation
+                            </p>
+                            <p data-en="Upon completion of studies, I hold:" 
+                                   data-pl="Po ukończeniu studiów posiadam:">
+                                    Upon completion of studies, I hold:
+                            </p>
+                            <p data-en="• Bachelor's degree in Computer Graphics" 
+                                   data-pl="• Dyplom licencjatki grafiki komputerowej">
+                                   • Bachelor's degree in Computer Graphics
+                            </p>
+                            <p data-en="• Professional title: Computer Graphic Designer" 
+                                   data-pl="• Tytuł zawodowy: Grafik Komputerowy">
+                                    • Professional title: Computer Graphic Designer
+                            </p>
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title" data-en="Veterinary Technician" data-pl="Technik Weterynarii">Veterinary Technician</span>
+                                <span class="cv-item-date">09/2018 – 04/2021</span>
+                            </div>
+                            <p data-en="Horticultural Technical Secondary School (Zespół Szkół nr 39 im. Edmunda Jankowskiego) - Bełska 1/3, 02-640 Warsaw,"
+                               data-pl="Technikum Ogrodnicze w Zespole Szkół nr 39 im. Edmunda Jankowskiego – Bełska 1/3, 02-640 Warszawa,">
+                                Horticultural Technical Secondary School (Zespół Szkół nr 39 im. Edmunda Jankowskiego) - Bełska 1/3, 02-640 Warsaw,
+                            </p>
+                            <p data-en="Completed a four-year technical program Field of Study: Veterinary Technician"
+                               data-pl="Czteroletnie technikum, na kierunku Technik Weterynarii">
+                                Completed a four-year technical program Field of Study: Veterinary Technician
+                            </p>
+                            <p data-en="Earned:"
+                               data-pl="Po ukończeniu nauki posiadam:">
+                                Earned:
+                            </p>
+                            <p data-en="• Vocational qualification certificate"
+                               data-pl="• Świadectwo ukończenia technikum">
+                                • Vocational qualification certificate
+                            </p>
+                            <p data-en="• Diploma confirming professional qualifications"
+                               data-pl="•Dyplom potwierdzający kwalifikacje w zawodzie">
+                               • Diploma confirming professional qualifications
+                            </p>
+                            <p data-en="• Secondary school leaving certificate (Matura)"
+                               data-pl="• Świadectwo maturalne">
+                                • Secondary school leaving certificate (Matura)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title" data-en="Experience" data-pl="Doświadczenie">Experience</h2>
+                    <div class="card">
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title" data-en="Junior Customer Advisor Mellon Poland Sp. z o.o. – Warsaw" data-pl="Młodszy doradca klienta Mellon Poladn sp. z. o. o. – Warszawa">Junior Customer Advisor Mellon Poland Sp. z o.o. – Warsaw</span>
+                                <span class="cv-item-date">06/2025 – 07/2025</span>
+                            </div>
+                            <p data-en="• Participation in a comprehensive training program in retail banking"
+                               data-pl="• udział w kompleksowym programie szkoleniowym z zakresu bankowości detalicznej">
+                               • Participation in a comprehensive training program in retail banking
+                            </p>
+                            <p data-en="• Learning banking systems and call center processes"
+                               data-pl="• nauka pracy na systemach bankowych i obsługi procesów infolinii">
+                                • Learning banking systems and call center processes
+                            </p>
+                            <p data-en="• Telephone customer service in basic banking operations"
+                               data-pl="• telefoniczne wsparcie klientów w zakresie podstawowych operacji bankowych">
+                               • Telephone customer service in basic banking operations
+                            </p>
+                            <p data-en="• Development of communication skills and professional customer service"
+                               data-pl="• rozwijanie umiejętności komunikacji i profesjonalnej obsługi klienta">
+                               • Development of communication skills and professional customer service
+                            <p data-en="• Working in accordance with bank quality and security standards"
+                               data-pl="• praca zgodnie ze standardami jakości i bezpieczeństwa banku">
+                               • Working in accordance with bank quality and security standards
+                            </p>
+                            
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title" data-en="Receptionist Tiffi Old Town Hotel - Warsaw" data-pl="Recepcja Tiffi Old Town Hotel - Warszawa">Receptionist Tiffi Old Town Hotel - Warsaw</span>
+                                <span class="cv-item-date">08/2022 – 05/2025</span>
+                            </div>
+                            <p data-en="• Welcoming and checking in guests"
+                               data-pl="• Meldowanie i wymeldowywanie gości">
+                               • Welcoming and checking in guests
+                            </p>
+                            <p data-en="• Providing support and assistance to hotel guests"
+                               data-pl="• Wsparcie i obsługa gościa zameldowanego">
+                               • Providing support and assistance to hotel guests
+                            </p>
+                            <p data-en="• Resolving guest issues"
+                               data-pl="• Rozliczanie pobytów">
+                               • Resolving guest issues
+                            </p>
+                            <p data-en="• Handling payments and issuing invoices"
+                               data-pl="• Wystawianie faktur">
+                                • Handling payments and issuing invoices
+                            </p>
+                            <p data-en="• Operating hotel systems (Hotres and Salto)"
+                               data-pl="• Obsługa systemów Hotres oraz Salto">
+                                • Operating hotel systems (Hotres and Salto)
+                            </p>
+                            <p data-en="• Operating the fire protection system"
+                               data-pl="• Obsługa systemu przeciwpożarowego">
+                                • Operating the fire protection system
+                            </p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title" data-en="Veterinary Technician Żoliborz Veterinary Clinic - Warsaw" data-pl="Technik Weterynarii Żoliborska Klinika weterynaryjna - Warszawa">Veterinary Technician Żoliborz Veterinary Clinic - Warsaw</span>
+                                <span class="cv-item-date">04/2021 – 05/2022</span>
+                            </div>
+                            <p data-en="• Treatment of injured and weakened animals"
+                               data-pl="• Leczenie zwierząt rannych i osłabionych">
+                               • Treatment of injured and weakened animals
+                            </p>
+                            <p data-en="• Monitoring animal welfare"
+                               data-pl="• Monitorowanie dobrostanu zwierząt">
+                               • Monitoring animal welfare
+                            </p>
+                            <p data-en="• Conducting veterinary preventive care"
+                               data-pl="• Prowadzenie profilaktyki weterynaryjnej">
+                               • Conducting veterinary preventive care
+                            </p>
+                             <p data-en="• Reviewing documents, assessing their completeness, and taking necessary steps to rectify any deficiencies"
+                               data-pl="• Przeglądanie dokumentów, opiniowanie ich komplementarności oraz podejmowanie niezbędnych kroków w celu usunięcia wszelkich braków">
+                                • Reviewing documents, assessing their completeness, and taking necessary steps to rectify any deficiencies
+                            </p>
+                             <p data-en="• Handling payments"
+                               data-pl="• Przyjmowanie płatności">
+                              • Handling payments
+                            </p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <span class="cv-item-title">McDonald's Crew Member KH GROUP KRISTÓF HANKÓ - Małopole</span>
+                                <span class="cv-item-date">07/2020 – 03/2021</span>
+                            </div>
+                            <p data-en="• Preparing products according to company standards"
+                               data-pl="• przygotowywanie produktów zgodnie ze standardami sieci">
+                              • Preparing products according to company standards
+                            </p>
+                             <p data-en="• Operating kitchen stations (grill, sandwich preparation, frying)"
+                               data-pl="• obsługa stanowisk kuchennych (grill, przygotowanie kanapek, smażenie produktów)">
+                             • Operating kitchen stations (grill, sandwich preparation, frying)
+                            </p>
+                             <p data-en="• Maintaining cleanliness, hygiene, and food safety standards"
+                               data-pl="• dbałość o jakość, świeżość i estetykę wydawanych produktów">
+                              • Maintaining cleanliness, hygiene, and food safety standards
+                            </p>
+                             <p data-en="• Teamwork in a dynamic and fast-paced environment"
+                               data-pl="• przestrzeganie zasad higieny, bezpieczeństwa i pracy zespołowej">
+                              • Teamwork in a dynamic and fast-paced environment
+                            </p>
+                             <p data-en="• Working under time pressure"
+                               data-pl="• praca w dynamicznym środowisku i pod presją czasu">
+                              • Working under time pressure
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title" data-en="Skills" data-pl="Umiejętności">Skills</h2>
+                    <div class="card">
+                        <ul>
+                            <li data-en="Excellent work organization"
+                                data-pl="Świetna organizacja pracy">Excellent work organization</li>
+                            <li data-en="Basic proficiency in Adobe Illustrator and Photoshop"
+                                data-pl="Podstawowe umiejętności korzystania z programów Adobe Ilustrator i Photoshop">Basic proficiency in Adobe Illustrator and Photoshop</li>
+                            <li data-en="Creativity"
+                                data-pl="Kreatywność">Creativity</li>
+                            <li data-en="Willingness to work in a shift system"
+                                data-pl="Gotowość do pracy w systemie zmianowym">Willingness to work in a shift system</li>
+                            <li data-en="Well-developed interpersonal skills"
+                                data-pl="Rozwinięte umiejętności interpersonalne">Well-developed interpersonal skills</li>
+                            <li data-en="Availability and commitment"
+                                data-pl="Dyspozycyjność i zaangażowanie">Availability and commitment</li>
+                            <li data-en="Professional customer service"
+                                data-pl="Profesjonalna obsługa klienta">Professional customer service</li>
+                            <li data-en="Valid category B driving license"
+                                data-pl="Czynne prawo jazdy kat. B">Valid category B driving license</li>
+                            <li data-en="Good knowledge of veterinary regulations"
+                                data-pl="Dobra znajomość przepisów weterynaryjnych">Good knowledge of veterinary regulations</li>
+                            <li data-en="Good contact with animals and empathy"
+                                data-pl="Dobry kontakt ze zwierzętami i empatia">Good contact with animals and empathy</li>
+                            <li data-en="Licensed to practice as a veterinary technician"
+                                data-pl="Czynne prawo do wykonywania Zawodu technika weterynarii">Licensed to practice as a veterinary technician</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title" data-en="Known Languages" data-pl="Umiejętności">Known Languages</h2>
+                    <div class="card">
+                        <ul>
+                            <li data-en="Polish Native"
+                                data-pl="Polski Ojczysty">Polish Native</li>
+                            <li data-en="English Advanced (C1)"
+                                data-pl="Angielski Zaawansowany (C1)">English Advanced (C1)</li>
+                        </ul>
+                           
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title" data-en="CV PDF" data-pl="CV PDF">CV PDF</h2>
+                    <div class="card">
+                        <a href="CV Karolina Morka.pdf" download="CV Karolina Morka.pdf">CV Karolina Morka</a>
+                        <br>
+                        <a href="CV Karolina Morka eng.pdf" download="CV Karolina Morka eng.pdf">CV Karolina Morka eng</a>
+                           
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Page -->
+        <section id="portfolio" class="page">
+            <div class="section">
+                <h1 class="section-title">Portfolio</h1>
+                <div class="card">
+                    <h3 data-en="This collection showcases my most significant professional projects and achievements, demonstrating the breadth and depth of my experience."
+                       data-pl="Ta kolekcja prezentuje moje najważniejsze projekty zawodowe i osiągnięcia, ukazując zakres i głębię mojego doświadczenia.">
+                        This collection showcases my most significant professional projects and achievements.
+                </h3>
+                </div>
+            </div>
+            
+            <div class="section">
+                 <h2 data-en="Project Highlights" data-pl="Najważniejsze Projekty">Project Highlights</h2> 
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="3D Blender - Ćwiczenia (‎22 ‎stycznia ‎2023).png" alt="Dashboard interface of advanced analytics platform showing key performance metrics" loading="lazy" />
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="Grafika na kubek Jednorożec (18 ‎lutego ‎2020).jpg" alt="Team of professionals collaborating in a modern office space during a strategy session" loading="lazy" />
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="Plakat - Ćwiczenia (‎13 ‎lutego ‎2025).jpg" alt="Team of professionals collaborating in a modern office space during a strategy session" loading="lazy" />
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="Naklejka Dinozaur (‎3 ‎marca ‎2021).jpg" alt="Award ceremony with team members holding industry recognition trophies" loading="lazy" />
+                    </div>
+                    
+                   <div class="portfolio-item">
+                        <img src="Logo książki wersja 2 (16 czerwca 2023).jpg" alt="Team of professionals collaborating in a modern office space during a strategy session" loading="lazy" />
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="Okulary - rysunki prywatne (14 luty 2025).jpg" alt="Whiteboard session illustrating system architecture and workflow diagrams" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+
+        <div class="section">
+            <h1 class="section-title" data-en="More" data-pl="Więcej">More</h1>
+                <div class="card">
+                     <a href="Projects.zip" download="Karolina_Morka_Projects.zip">Karolina Morka Projects</a>
+                </div>
+        </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CV. All rights reserved.</p>
+            <div class="contact-info">
+                <a href="mailto:kmorka.desing@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/karolina-morka-3130aa2a5/" target="_blank">LinkedIn</a>
+                <a href="tel:+519389363">Phone</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox HTML -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script defer>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        function openLightbox(imageSrc) {
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Lightbox event listeners
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        const currentLang = { value: 'en' };
+        const cache = new Map();
+        
+        // Page state management
+        function savePageState(pageId) {
+            localStorage.setItem('currentPage', pageId);
+        }
+        
+        function getPageState() {
+            return localStorage.getItem('currentPage') || '#home';
+        }
+
+        function toggleLanguage() {
+            currentLang.value = currentLang.value === 'en' ? 'pl' : 'en';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            const key = `texts-${currentLang.value}`;
+            if (!cache.has(key)) {
+                const elements = document.querySelectorAll('[data-en], [data-pl]');
+                cache.set(key, elements);
+            }
+            
+            cache.get(key).forEach(element => {
+                const text = element.getAttribute(`data-${currentLang.value}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            document.documentElement.lang = currentLang.value;
+            document.title = 'CV';
+        }
+
+        function navigateToPage(pageId, pages, navLinks) {
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const activePage = document.querySelector(pageId);
+            if (activePage) activePage.classList.add('active');
+            
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === pageId);
+            });
+            
+            savePageState(pageId);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const langToggle = document.getElementById('language-toggle');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            // Add click listeners to portfolio images
+            const portfolioImages = document.querySelectorAll('.portfolio-item img');
+            portfolioImages.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    openLightbox(this.src);
+                });
+            });
+            
+            langToggle.addEventListener('click', toggleLanguage);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('href');
+                    navigateToPage(pageId, pages, navLinks);
+                    history.pushState({}, '', pageId);
+                });
+            });
+            
+            window.addEventListener('popstate', function() {
+                const pageId = window.location.pathname || window.location.hash || getPageState();
+                navigateToPage(pageId, pages, navLinks);
+            });
+            
+            navigateToPage(getPageState(), pages, navLinks);
+        });
+    </script>
+</body>
+</html>
+
