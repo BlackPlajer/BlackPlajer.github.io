@@ -36,6 +36,11 @@
             background: url(tło.jpg) center/cover no-repeat,
                         rgba(231, 230, 230, 0.6);
             background-blend-mode: lighten;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
         header {
@@ -77,11 +82,15 @@
         .image img {
             width: 500px;
         }
-.container {
+main {
+            flex: 1;
+        }
+
+        .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: var(--padding) 0;
+            padding: var(--padding) 0 0 0;
         }
 
         nav {
@@ -104,11 +113,13 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 20px;
+           
         }
 
         .logo img {
-            width: 200px;
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -295,7 +306,8 @@
             color: var(--light-text);
             text-align: center;
             padding: 25px;
-            margin-top: 2%;
+            margin-top: 0;
+            width: 100%;
         }
 
         .contact-info {
